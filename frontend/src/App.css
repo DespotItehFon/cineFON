@@ -1,0 +1,164 @@
+.navbar1{
+  background: linear-gradient(to bottom, #2c3e50, rgb(0, 0, 16));
+  width: 100%;
+  height: 150px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.App{
+  width: 100%;
+  height: 150vh;
+  background-color: rgb(0, 0, 16);
+}
+
+.navbar-elements{
+  margin-top: 5px;
+}
+
+.btn-navbar{
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  font-size: larger;
+  margin-left: 20px;
+}
+
+.btn-navbar:hover{
+  font-size: x-large;
+  cursor: pointer;
+  transition: 0.5s;
+  /* color: #34495e; */
+}
+
+.body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+label{
+  margin-left: 5%;
+}
+
+.register-form{
+  width: 400px;
+  height: 600px;
+  background-color: #2c3e50;
+  border-radius: 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form{
+  width: 400px;
+  height: 550px;
+  background-color: #2c3e50;
+  border-radius: 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form{
+  width: 350px;
+  height: 300px;
+  background-color: #2c3e50;
+  border-radius: 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-input {
+  width: 80%;
+  height: 30px;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #34495e;
+  color: #fff;
+  background-color: #2c3e50;
+}
+
+.btn-login{
+  background-color: #34495e;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  width: 100px;
+  height: 40px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.btn-login:hover{
+  background-color: #2c3e50;
+}
+
+select {
+  width: 200px;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #2c3e50;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+select:hover,
+select:focus {
+  background-color: #34495e;
+  outline: none;
+  cursor: pointer;
+}
+
+.movie{
+  display: flex;
+  width: 800px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border: #2c3e50 solid 1px;
+  border-radius: 20px;
+}
+
+.movie:hover{
+  background-color: #12181f;
+  transition: 0.5s;
+  box-shadow: 0 0 15px #2c3e50;
+  cursor: pointer;
+}
+
+.actor{
+  display: flex;
+  width: 800px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border: #2c3e50 solid 1px;
+  border-radius: 20px;
+}
+
+.actor:hover{
+  background-color: #12181f;
+  transition: 0.5s;
+  box-shadow: 0 0 15px #2c3e50;
+  cursor: pointer;
+}
+
