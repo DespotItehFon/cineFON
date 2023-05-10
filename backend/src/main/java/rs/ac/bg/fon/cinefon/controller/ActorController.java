@@ -10,8 +10,6 @@ import rs.ac.bg.fon.cinefon.domain.Actor;
 import rs.ac.bg.fon.cinefon.domain.Movie;
 import rs.ac.bg.fon.cinefon.service.ActorService;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/v1/actors")
 public class ActorController {
@@ -33,8 +31,8 @@ public class ActorController {
     }
 
     @GetMapping("/{id}/movies")
-    public List<Movie> getActorByName(@PathVariable Long id) {
-        return actorService.getMoviesByActorId(id);
+    public Page<Movie> getMoviesByActor(@PathVariable Long id, Pageable pageable) {
+        return actorService.getMoviesByActorId(id, pageable);
     }
 
 }

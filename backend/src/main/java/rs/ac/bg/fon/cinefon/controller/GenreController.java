@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rs.ac.bg.fon.cinefon.domain.Genre;
+import rs.ac.bg.fon.cinefon.domain.Movie;
 import rs.ac.bg.fon.cinefon.service.GenreService;
 
 @RestController
@@ -26,6 +27,11 @@ public class GenreController {
     @GetMapping("/{id}")
     public Genre getGenreById(@PathVariable Long id) {
         return genreService.getById(id);
+    }
+
+    @GetMapping("/{id}/movies")
+    public Page<Movie> getGenreMovies(@PathVariable Long id, Pageable pageable) {
+        return genreService.getGenreMovies(id, pageable);
     }
 
 }

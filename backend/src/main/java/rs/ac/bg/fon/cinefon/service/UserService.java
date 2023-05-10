@@ -31,4 +31,8 @@ public class UserService {
     public User getByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(DataNotFoundException::new);
     }
+
+    public Page<User> getOtherUsers(Pageable pageable) {
+        return userRepository.findByUsernameNot(getCurrentlyLoggedInUser().getUsername(), pageable);
+    }
 }

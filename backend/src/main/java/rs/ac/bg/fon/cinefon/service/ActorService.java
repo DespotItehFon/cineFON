@@ -1,6 +1,7 @@
 package rs.ac.bg.fon.cinefon.service;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import rs.ac.bg.fon.cinefon.domain.Actor;
@@ -32,8 +33,12 @@ public class ActorService {
     }
 
 
-    public List<Movie> getMoviesByActorId(Long actorId) {
+    public Page<Movie> getMoviesByActorId(Long actorId, Pageable pageable) {
         Actor actor = actorRepository.findById(actorId).orElseThrow(DataNotFoundException::new);
-        return movieRepository.findAll().stream().filter(movie -> movie.getCast().contains(actor)).toList();
+        List<Movie> movieList = movieRepository.findAll()
+                .stream()
+                .filter(movie -> movie.getCast().contains(actor))
+                .toList();
+        return new PageImpl<>(movieList,pageable,movieList.size());
     }
 }

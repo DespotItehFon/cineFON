@@ -39,5 +39,10 @@ public class UserController {
         return userService.getCurrentlyLoggedInUser();
     }
 
+    @GetMapping("/otherUsers")
+    public Page<User> getOtherUsers(Pageable pageable) {
+        return userService.getOtherUsers(pageable);
+    }
+
 
 }

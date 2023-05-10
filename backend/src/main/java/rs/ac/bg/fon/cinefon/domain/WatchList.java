@@ -3,6 +3,7 @@ package rs.ac.bg.fon.cinefon.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,5 +25,9 @@ public class WatchList {
     private User user;
 
     @OneToMany
-    private List<Movie> movies;
+    private List<Movie> movies = new ArrayList<>();
+
+    public void addMovie(Movie movie) {
+        movies.add(movie);
+    }
 }

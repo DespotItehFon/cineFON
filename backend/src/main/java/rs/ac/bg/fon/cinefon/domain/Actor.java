@@ -17,10 +17,14 @@ import lombok.*;
 public class Actor {
     @Id
     private long id;
+
     private String name;
+
     @JsonProperty("original_name")
     private String originalName;
+
     private double popularity;
+
     @JsonProperty("profile_path")
     private String profilePath;
 }
