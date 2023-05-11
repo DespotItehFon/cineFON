@@ -135,6 +135,8 @@ select:focus {
   margin: 20px;
   border: #2c3e50 solid 1px;
   border-radius: 20px;
+  background-size: cover;
+  background-position: center;
 }
 
 .movie:hover{
@@ -162,3 +164,81 @@ select:focus {
   cursor: pointer;
 }
 
+.circle-actor{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.circle-actor:hover{
+  width: 120px;
+  height: 120px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.actors{
+  width: 500px;
+  height: 100px;
+  display: flex;
+  margin-top: 20px;
+}
+
+.actor-movie{
+  width: 200px;
+  height: 150px;
+}
+
+
+.actor-name{
+  width: 150px;
+}
+
+.backdrop{
+  width: 1280px;
+  height: 500px;
+  background-size: cover;
+  /* background-position: center; */
+}
+
+.actors-list{
+  width: 800px;
+  height: 800px;
+  display: flex;
+}
+
+.actors-page{
+  width: 800px;
+  height: 800px;
+  display: flex;
+}
+
+.profile{
+  width: 400px;
+  height: 600px;
+  background-size: cover;
+  background-position: center;
+}
+
+.movie-box{
+  display: flex;
+  width: 200px;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  border: #2c3e50 solid 1px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.movie-box:hover{
+  background-color: #12181f;
+  transition: 0.5s;
+  box-shadow: 0 0 15px #2c3e50;
+  cursor: pointer;
+}

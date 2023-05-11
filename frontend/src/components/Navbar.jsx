@@ -9,6 +9,7 @@ const Navbar = () => {
                 <Link to={"/actors"}><button className="btn-navbar">Actors</button></Link>
                 <Link to={"/movies"}><button className="btn-navbar">Movies</button></Link>
                 <Link to={"/genres"}><button className="btn-navbar">Genres</button></Link>
+                {/* <Link to={"/addreview"}><button className="btn-navbar">Add review</button></Link> */}
             </div>
         </div>
      );

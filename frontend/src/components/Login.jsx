@@ -9,6 +9,7 @@ const Login = () => {
           })
           .then(response => {
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('role', response.data.role);
             console.log(localStorage.getItem('token'))
           })
           .catch(error => {
