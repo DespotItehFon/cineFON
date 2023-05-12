@@ -12,6 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static rs.ac.bg.fon.cinefon.domain.Role.CRITIC;
+import static rs.ac.bg.fon.cinefon.domain.Role.USER;
 
 @Configuration
 @EnableWebSecurity
@@ -24,12 +25,19 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .cors().disable()
                 .csrf().disable()
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/api/v1/seed**").permitAll()
+
                         .requestMatchers(HttpMethod.POST, "/api/v1/reviews/**").hasAuthority(CRITIC.name())
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/reviews/**").hasAuthority(CRITIC.name())
+
+                        .requestMatchers(HttpMethod.GET, "/api/v1/watchlist").hasAuthority(USER.name())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/watchlist/**").hasAuthority(USER.name())
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/watchlist/**").hasAuthority(USER.name())
+
 //                        .requestMatchers(HttpMethod.POST, "/api/v1/gradovi/**").hasAuthority("ADMIN")
 //                        .requestMatchers(HttpMethod.DELETE, "/api/v1/gradovi/**").hasAuthority("ADMIN")
 //                        .requestMatchers(HttpMethod.POST, "/api/v1/obavestenja/**").hasAuthority("ADMIN")

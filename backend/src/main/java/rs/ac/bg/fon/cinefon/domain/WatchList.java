@@ -30,4 +30,8 @@ public class WatchList {
     public void addMovie(Movie movie) {
         movies.add(movie);
     }
+
+    public void removeMovie(Movie movieToBeRemovedFromWatchList) {
+        movies.remove(movieToBeRemovedFromWatchList);
+    }
 }

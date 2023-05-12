@@ -1,7 +1,5 @@
 package rs.ac.bg.fon.cinefon.controller;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import rs.ac.bg.fon.cinefon.domain.WatchList;
 import rs.ac.bg.fon.cinefon.service.WatchListService;
@@ -15,18 +13,33 @@ public class WatchlistController {
         this.watchListService = watchListService;
     }
 
-    @GetMapping("/my")
+    @GetMapping("/{id}")
+    public WatchList getWatchlistById(@PathVariable Long id) {
+        return watchListService.getWatchlistById(id);
+    }
+
+    @GetMapping
     public WatchList getWatchlist() {
-        return watchListService.getCurrentUsersWatchList();
+        return watchListService.getWatchlist();
     }
 
-    @GetMapping("/others")
-    public Page<WatchList> addWatchlist(Pageable pageable) {
-        return watchListService.getOtherUsersWatchList(pageable);
+    @GetMapping("/user/{userId}")
+    public WatchList getWatchlistByUser(@PathVariable Long userId) {
+        return watchListService.getWatchlistByUser(userId);
     }
 
-    @PostMapping("/my/{movieId}")
+    @PostMapping("/movie/{movieId}")
     public WatchList addMovieToMyWatchlist(@PathVariable Long movieId) {
         return watchListService.addMovieToMyWatchlist(movieId);
+    }
+
+    @DeleteMapping("/movie/{movieId}")
+    public void removeMovieFromMyWatchlist(@PathVariable Long movieId) {
+        watchListService.removeMovieFromMyWatchlist(movieId);
+    }
+
+    @GetMapping("/movie/{movieId}")
+    public boolean isInMyWatchlist(@PathVariable Long movieId) {
+        return watchListService.isInMyWatchlist(movieId);
     }
 }
