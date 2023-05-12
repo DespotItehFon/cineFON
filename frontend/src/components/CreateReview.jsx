@@ -37,7 +37,7 @@ const CreateReview = () => {
         <div className="add-review">
             <input type="text" name="" id="content" />
             <input type="text" name="" id="rating" />
-            <button onClick={() => handleSubmit()}>Post review</button>
+            <button onClick={() => alert("ALOOO STA TREBA DA SE PROSLEDI")}>Post review</button>
         </div>
      );
 }

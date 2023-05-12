@@ -58,7 +58,7 @@ const ActorDetails = () => {
     const navigate = useNavigate();
     return ( 
         <div className="actor-details">
-            <div className="profile" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${details.profile_path})` }}/>
+            <div className="profile" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500/${details.profile_path})` }}/>
             <div className="actor-movie-list">
                 {movies && movies.map((movie) => (
                     <div className="movie-box" onClick={() => navigate(`/movies/${movie.id}`)} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.poster_path})` }}>

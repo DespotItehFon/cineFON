@@ -1,6 +1,13 @@
 import axios from 'axios';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    localStorage.removeItem("role");
+    localStorage.removeItem("token");
+  })
       const login = () => {
         axios
           .post('http://localhost:8080/api/v1/auth/authenticate', {
@@ -10,7 +17,8 @@ const Login = () => {
           .then(response => {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('role', response.data.role);
-            console.log(localStorage.getItem('token'))
+            // console.log(response.data)
+            navigate(`/movies`)
           })
           .catch(error => {
             console.error(error);

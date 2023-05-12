@@ -9,9 +9,17 @@ import ActorsPage from './components/ActorsPage';
 import MovieDetails from './components/MovieDetails';
 import ActorDetails from './components/ActorDetails';
 import CreateReview from './components/CreateReview';
+import Watchlist from './components/Watchlist';
+import Reviews from './components/Reviews';
+import { useEffect, useState } from 'react';
+import AllReviews from './components/AllReviews';
 
 
 function App() {
+  const [userRole, setUserRole] = useState('');
+    useEffect(() => {
+        setUserRole(localStorage.getItem('role'));
+    }, [localStorage.getItem('role')])
   return (
     <BrowserRouter>
     <div className="App">
@@ -28,6 +36,9 @@ function App() {
             <Route path="/actors" element={<ActorsPage/>} />
             <Route path="/actors/:id" element={<ActorDetails/>} />
             <Route path="/addreview/:id" element={<CreateReview/>} />
+            <Route path="/watchlist" element={<Watchlist/>} />
+            <Route path="/reviews" element={<Reviews/>} />
+            <Route path="/allreviews" element={<AllReviews/>} />
           </Routes>
       </div>
     </div>
