@@ -13,6 +13,9 @@ import Watchlist from './components/Watchlist';
 import Reviews from './components/Reviews';
 import { useEffect, useState } from 'react';
 import AllReviews from './components/AllReviews';
+import UserPage from './components/UserPage';
+import MyPage from './components/MyPage';
+import Genre from './components/Genre';
 
 
 function App() {
@@ -39,6 +42,9 @@ function App() {
             <Route path="/watchlist" element={<Watchlist/>} />
             <Route path="/reviews" element={<Reviews/>} />
             <Route path="/allreviews" element={<AllReviews/>} />
+            <Route path="/user" element={<MyPage/>} />
+            <Route path="/review/user/:userID" element={<UserPage/>} />
+            <Route path="/genre/:id" element={<Genre/>}/>
           </Routes>
       </div>
     </div>

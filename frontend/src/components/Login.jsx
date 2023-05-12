@@ -3,6 +3,24 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  // function getUserID(){
+  //   axios
+  //         .get('http://localhost:8080/api/v1/users/currentlyLoggedIn', {
+  //           headers: {
+  //             Authorization: `Bearer ${localStorage.getItem('token')}`
+  //           }
+  //         })
+  //         .then(response => {
+  //           alert(response)
+  //         })
+  //         .catch(error => {
+  //           console.error(error);
+  //         });
+
+    
+
+  //       // console.log(user)
+  // }
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.removeItem("role");
@@ -17,13 +35,16 @@ const Login = () => {
           .then(response => {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('role', response.data.role);
-            // console.log(response.data)
+            // localStorage.setItem('userID', getUserID());
+            // console.log(localStorage.getItem('userID'))
+            // console.log(getUserID())
             navigate(`/movies`)
           })
           .catch(error => {
             console.error(error);
           });
       };
+      console.log(localStorage.getItem('userID'))
     return ( 
             <div className="login-form">    
                 <div className="form-group">

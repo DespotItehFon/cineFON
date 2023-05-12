@@ -57,6 +57,8 @@ const ActorDetails = () => {
 
     const navigate = useNavigate();
     return ( 
+      <div>
+      <h1 style={{color: 'white', marginLeft: '50px'}}>{details.name}</h1>
         <div className="actor-details">
             <div className="profile" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500/${details.profile_path})` }}/>
             <div className="actor-movie-list">
@@ -66,6 +68,7 @@ const ActorDetails = () => {
                     </div>
                 ))}
             </div>
+        </div>
         </div>
      );
 }

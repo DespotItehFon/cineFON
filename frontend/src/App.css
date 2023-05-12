@@ -9,7 +9,7 @@
 
 .App{
   width: 100%;
-  height: 150vh;
+  /* height: 150vh; */
   background-color: rgb(0, 0, 16);
 }
 
@@ -34,10 +34,12 @@
 
 .body{
   width: 100%;
-  height: 100vh;
-  display: flex;
+  min-height: 100vh;
+  /* min-height: 800vh;
+  height: auto; */
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 label{
@@ -45,6 +47,8 @@ label{
 }
 
 .register-form{
+  margin-left: 37%;
+  margin-top: 5%;
   width: 400px;
   height: 600px;
   background-color: #2c3e50;
@@ -69,6 +73,8 @@ label{
 }
 
 .login-form{
+  margin-left: 39%;
+  margin-top: 5%;
   width: 350px;
   height: 300px;
   background-color: #2c3e50;
@@ -126,7 +132,12 @@ select:focus {
   cursor: pointer;
 }
 
+.movies-page{
+  margin-left: 22%;
+}
+
 .movie{
+  /* margin-left: 20%; */
   display: flex;
   width: 800px;
   height: 100px;
@@ -144,6 +155,17 @@ select:focus {
   transition: 0.5s;
   box-shadow: 0 0 15px #2c3e50;
   cursor: pointer;
+}
+
+.movie-details{
+  margin-left: 7%;
+}
+
+.actor-details{
+  width: 1000px;
+  height: 600px;
+  display: flex;
+  margin-left: 8%;
 }
 
 .actor{
@@ -203,23 +225,47 @@ select:focus {
   /* background-position: center; */
 }
 
-.actors-list{
-  width: 800px;
-  height: 800px;
-  display: flex;
+.actors-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  margin-left: 160px;
 }
 
-.actors-page{
-  width: 800px;
-  height: 800px;
+.pagination {
   display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 800px;
+  margin-left: 20px;
 }
+
+.pagination-button {
+  padding: 8px 16px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* .actors-page{
+  width: 800px;
+  height: 500px;
+  display: flex;
+} */
+
 
 .profile{
   width: 400px;
   height: 600px;
   background-size: cover;
   background-position: center;
+  border-radius: 20px;
 }
 
 .movie-box{
@@ -247,22 +293,135 @@ select:focus {
   width: 400px;
   height: 200px;
   padding-top: 50px;
+  padding-left: 20%;
 }
 
 .single-review{
-  width: 500px;
-  height: 100px;
+  width: 680px;
+  height: 80px;
   background-color: #12181f;
   border-radius: 20px;
   box-shadow: 0px 0px 6px #2c3e50;
-  /* display: inline; */
-  align-items: center;
-  justify-content: center; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .single-review:hover{
   background-color: #12181f;
   transition: 0.5s;
   box-shadow: 0 0 15px #2c3e50;
+  /* cursor: pointer; */
+}
+
+.review-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  color: #5a7795;
+}
+
+.author {
+  margin-right: 10px;
+}
+
+.author:hover{
   cursor: pointer;
+  color: #287dd8;
+  transition: 0.5s;
+}
+
+.review-content {
+  flex-grow: 1;
+  margin-right: 10px;
+  color: #5a7795;
+}
+
+.rating {
+  margin-top: 10px;
+  padding-left: 10px;
+  color: #8e3c3c;
+}
+
+.all-reviews{
+  width: 500px;
+  display: flex;
+}
+
+.delete-btn{
+  width: 200px;
+  margin-left: 150px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #8e3c3c;
+}
+
+.delete-btn:hover{
+  font-size: large;
+  color: #e80808;
+  transition: 0.5s;
+}
+
+.movie-btn{
+  width: 200px;
+  margin-left: 150px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #5a7795;
+  font-size: larger;
+}
+
+.movie-btn:hover{
+  font-size: x-large;
+  color: #287dd8;
+  transition: 0.5s;
+}
+
+.add-review{
+  width: 300px;
+  height: 300px;
+  margin-top: 8%;
+  margin-left: 40%;
+  background-color: #2c3e50;
+  border-radius: 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.details{
+  width: 1280px;
+  display: flex;
+  height: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #5a7795;
+}
+
+.details-box{
+  width: 680px;
+  height: 80px;
+  /* background-color: #12181f; */
+  /* border-radius: 20px; */
+  /* box-shadow: 0px 0px 6px #2c3e50; */
+  border-left: 1px solid #2c3e50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  padding-left: 20px;
+}
+
+.details-box:hover{
+  background-color: #2c3e50;
+  transition: 0.5s;
+}
+
+.genre:hover{
+  cursor: pointer;
+  color: #0a7af3;
+  transition: 0.5s;
 }

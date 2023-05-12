@@ -1,6 +1,7 @@
 import SingleReview from "./SingleReview";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+// import styles from './Reviews.css';
 
 const AllReviews = () => {
     const [reviews, setReviews] = useState([]);
