@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import rs.ac.bg.fon.cinefon.domain.Movie;
 import rs.ac.bg.fon.cinefon.service.MovieService;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/movies")
 public class MovieController {
@@ -26,5 +28,10 @@ public class MovieController {
     @GetMapping("/{id}")
     public Movie getMovieById(@PathVariable Long id) {
         return movieService.getById(id);
+    }
+
+    @GetMapping("/{movieId}/statistics")
+    public Map<Integer, Long> getStatistics(@PathVariable Long movieId) {
+        return movieService.getStatistics(movieId);
     }
 }

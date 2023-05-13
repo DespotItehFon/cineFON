@@ -32,5 +32,5 @@ public class Review {
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
-    private byte rating;
+    private int rating;
 }

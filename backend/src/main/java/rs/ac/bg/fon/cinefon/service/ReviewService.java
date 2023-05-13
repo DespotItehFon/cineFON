@@ -10,6 +10,7 @@ import rs.ac.bg.fon.cinefon.exception.DataNotFoundException;
 import rs.ac.bg.fon.cinefon.repository.ReviewRepository;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,9 @@ public class ReviewService {
         return reviewRepository.findById(id).orElseThrow(DataNotFoundException::new);
     }
 
+    public List<Review> getReviewsByMovieId(Long movieId) {
+        return reviewRepository.findByMovieId(movieId);
+    }
     public Page<Review> getReviewsByMovieId(Long movieId, Pageable pageable) {
         return reviewRepository.findByMovieId(movieId, pageable);
     }
