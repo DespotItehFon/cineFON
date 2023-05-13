@@ -29,6 +29,7 @@ const Reviews = () => {
             {reviews && reviews.map((review) => (
                 <SingleReview review={review}/>
             ))}
+            {!reviews && <h2>No reviews yet</h2>}
         </div>
      );
 }

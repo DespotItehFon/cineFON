@@ -74,7 +74,7 @@ const ActorsPage = () => {
   {Array.from(Array(totalPages).keys()).map((pageNumber) => (
     <button
       key={pageNumber}
-      style={{ width: '40px' }}
+      style={{ width: '40px', margin: '0 5px' }}
       onClick={() => goToPage(pageNumber)}
       className={`pagination-button ${pageNumber === currentPage ? 'active' : ''}`}
     >
@@ -91,6 +91,8 @@ const ActorsPage = () => {
     Next
   </button>
 </div>
+
+
     </div>
      );
 }

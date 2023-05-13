@@ -86,9 +86,9 @@ const MyPage = () => {
     
     return ( 
         <div className="user-page">
+          {user && <h1 style={{color: 'white', marginBottom: '40px'}}>{user.firstname} {user.lastname}</h1>}
             {role === 'USER' &&  <h1 style={{color: 'white', marginLeft: '100px', marginBottom: '40px'}}>My watchlist</h1>}
             {role === 'CRITIC' &&  <h1 style={{color: 'white', marginLeft: '100px', marginBottom: '40px'}}>My reviews</h1>}
-            {user && <h1 style={{color: 'white', marginLeft: '150px', marginBottom: '40px'}}>{user.firstname} {user.lastname}</h1>}
             <div className="movies-page">
                 {role === 'USER' && watchlist && watchlist.movies && watchlist.movies.map((movie) => (
                 <Movie movie={movie}/>

@@ -131,10 +131,10 @@ select:focus {
   outline: none;
   cursor: pointer;
 }
-
+/* 
 .movies-page{
   margin-left: 22%;
-}
+} */
 
 .movie{
   /* margin-left: 20%; */
@@ -234,23 +234,36 @@ select:focus {
 
 .pagination {
   display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  width: 924px;
-  margin-left: 22%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .pagination-button {
-  padding: 8px 16px;
-  background-color: #f0f0f0;
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 0 5px;
   border: none;
   border-radius: 4px;
+  background-color: #fff;
+  color: #0a7af3;
+  font-size: 14px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-button:hover {
+  background-color: #12181f;
 }
 
 .pagination-button:disabled {
-  opacity: 0.5;
   cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination-button.active {
+  background-color: #333;
+  color: #fff;
 }
 
 /* .actors-page{
@@ -289,16 +302,17 @@ select:focus {
   cursor: pointer;
 }
 
-.movies-reviews{
-  width: 400px;
+.movies-reviews-bar{
+  width: 800px;
   height: 200px;
   padding-top: 50px;
-  padding-left: 20%;
+  /* padding-left: 20%; */
+  display: flex;
 }
 
 .single-review{
-  width: 680px;
-  height: 80px;
+  width: 800px;
+  height: 150px;
   background-color: #12181f;
   border-radius: 20px;
   box-shadow: 0px 0px 6px #2c3e50;
@@ -324,6 +338,7 @@ select:focus {
 
 .author {
   margin-right: 10px;
+  color: #0a7af3;
 }
 
 .author:hover{
@@ -382,7 +397,7 @@ select:focus {
   width: 300px;
   height: 300px;
   margin-top: 8%;
-  margin-left: 40%;
+  margin-left: 38%;
   background-color: #2c3e50;
   border-radius: 20px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
@@ -392,33 +407,32 @@ select:focus {
   justify-content: center;
 }
 
-.details{
+.details {
   width: 1280px;
   display: flex;
-  height: 100px;
+  flex-wrap: wrap; /* Allow the boxes to wrap onto a new line */
+  justify-content: space-between; /* Distribute the boxes evenly */
   margin-top: 50px;
   margin-bottom: 50px;
   color: #5a7795;
 }
 
-.details-box{
-  width: 680px;
+.details-box {
+  width: 380px; /* Adjusted width to fit three boxes in a row */
   height: 80px;
-  /* background-color: #12181f; */
-  /* border-radius: 20px; */
-  /* box-shadow: 0px 0px 6px #2c3e50; */
   border-left: 1px solid #2c3e50;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
   padding-left: 20px;
+  margin-bottom: 20px; /* Add spacing between the rows */
 }
 
-.details-box:hover{
+.details-box:hover {
   background-color: #2c3e50;
   transition: 0.5s;
 }
+
 
 .genre:hover{
   cursor: pointer;
@@ -437,6 +451,8 @@ select:focus {
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 
 .movie-poster:hover{
@@ -445,11 +461,12 @@ select:focus {
 }
 
 .movies-page{
+  margin-left: 20%;
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
   width: 1000px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .single-review {
@@ -491,3 +508,39 @@ select:focus {
 .box-actor:hover{
   cursor: pointer;
 }
+
+.review-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.review-btn-left {
+  width: 140px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #5a7795;
+  font-size: larger;
+}
+
+.review-btn-right {
+  width: 200px;
+  background-color: transparent;
+  border-color: transparent;
+  color: #5a7795;
+  font-size: larger;
+  margin-left: 460px;
+}
+
+.review-btn-left:hover{
+  color: #0a7af3;
+}
+.review-btn-right:hover {
+  color: #d32f2f;
+}
+
+
+
+
+

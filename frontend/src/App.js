@@ -16,6 +16,7 @@ import AllReviews from './components/AllReviews';
 import UserPage from './components/UserPage';
 import MyPage from './components/MyPage';
 import Genre from './components/Genre';
+import UpdateReview from './components/UpdateReview';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
             <Route path="/user" element={<MyPage/>} />
             <Route path="/review/user/:userID" element={<UserPage/>} />
             <Route path="/genre/:id" element={<Genre/>}/>
+            <Route path="/updatereview/:id" element={<UpdateReview/>}/>
           </Routes>
       </div>
     </div>

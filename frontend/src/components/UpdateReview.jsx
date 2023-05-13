@@ -1,25 +1,43 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const CreateReview = ({ details, setAddReviewSwitch, onReviewPosted}) => {
-
-  const navigate = useNavigate();
-  // const { id } = useParams();
+const UpdateReview = () => {
+    const navigate = useNavigate();
+    const { id } = useParams();
+//   const { id } = useParams();
 
   const [content, setContent] = useState('');
   const [rating, setRating] = useState(0);
+  const [review, setReview] = useState();
 
+  useEffect(() => {
+    const getReviewByID = async () => {
+    try {
+        const response = await axios.get('http://localhost:8080/api/v1/reviews/'+id, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+        });
+        // setMovies(response.data.content)
+        setReview(response.data);
+    } catch (error) {
+        console.error(error);
+    }
+    };
+
+    getReviewByID();
+    console.log(review)
+}, []);
+console.log(review)
   const handleSubmit = () => {
     axios
-  .post(
+  .put(
     `http://localhost:8080/api/v1/reviews`,
     {
       content: document.getElementById('content').value,
       rating: selectedValue,
-      movie: {
-        id: details.id
-      }
+      id: id
     },
     {
       headers: {
@@ -32,13 +50,14 @@ const CreateReview = ({ details, setAddReviewSwitch, onReviewPosted}) => {
     // Perform any necessary actions after successful review submission
 
     // Redirect to the movie details page
-    onReviewPosted();
+    // onReviewPosted();
   })
   .catch(error => {
     console.error('Error posting review:', error);
-    onReviewPosted();
+    // onReviewPosted();
     // Handle error scenarios
   });
+  navigate('/movies/'+review.movie.id);
 }
 const sliderRef = useRef(null);
 const [selectedValue, setSelectedValue] = useState(1);
@@ -50,9 +69,9 @@ const [selectedValue, setSelectedValue] = useState(1);
 
     return ( 
         <div className="add-review" style={{width: '400px', height: '420px'}}>
-          <h5 style={{ textAlign: 'center', color: 'white'}}>{details.title}</h5>
+          <h5 style={{ textAlign: 'center', color: 'white'}}>{review?.movie && review.movie.title}</h5>
 
-          <textarea className="form-control" name="content" id="content" style={{ width: '340px', height: '250px', margin: '4px' }} placeholder="Content"></textarea>
+          <textarea className="form-control" name="content" id="content" style={{ width: '340px', height: '250px', margin: '4px' }} placeholder={review?.movie && review.content}></textarea>
 
             <input
               type="range"
@@ -73,4 +92,4 @@ const [selectedValue, setSelectedValue] = useState(1);
      );
 }
  
-export default CreateReview;
+export default UpdateReview;

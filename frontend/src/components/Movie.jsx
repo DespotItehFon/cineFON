@@ -13,7 +13,7 @@ const Movie = ({ movie, removeFromWatchlist }) => {
                 Remove from watchlist
                 </button>
             )} */}
-            {removeFromWatchlist && <div className="movie-poster-delete" onClick={() => removeFromWatchlist(movie.id)} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${movie.poster_path})` }}/>}
+            {/* {removeFromWatchlist && <div className="movie-poster-delete" onClick={() => removeFromWatchlist(movie.id)} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${movie.poster_path})` }}/>} */}
             {!removeFromWatchlist && <div className="movie-poster" onClick={() => navigate(`/movies/${movie.id}`)} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342/${movie.poster_path})` }}/>}
         </>
      );
