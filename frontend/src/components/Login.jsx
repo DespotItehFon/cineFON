@@ -1,65 +1,66 @@
-import axios from 'axios';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
-  // function getUserID(){
-  //   axios
-  //         .get('http://localhost:8080/api/v1/users/currentlyLoggedIn', {
-  //           headers: {
-  //             Authorization: `Bearer ${localStorage.getItem('token')}`
-  //           }
-  //         })
-  //         .then(response => {
-  //           alert(response)
-  //         })
-  //         .catch(error => {
-  //           console.error(error);
-  //         });
-
-    
-
-  //       // console.log(user)
-  // }
+const Login = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.removeItem("role");
     localStorage.removeItem("token");
-  })
-      const login = () => {
-        axios
-          .post('http://localhost:8080/api/v1/auth/authenticate', {
-            username: document.getElementById("username").value,
-            password: document.getElementById("password").value
-          })
-          .then(response => {
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('role', response.data.role);
-            // localStorage.setItem('userID', getUserID());
-            // console.log(localStorage.getItem('userID'))
-            // console.log(getUserID())
-            navigate(`/movies`)
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      };
-      console.log(localStorage.getItem('userID'))
-    return ( 
-            <div className="login-form">    
-                <div className="form-group">
-                    <label style={{color: "white"}}>Username </label>
-                    <input type="text" className="form-control" placeholder="User Name" id="username" style={{width: "260px", marginLeft: "20px", margin: "10px"}}/>
-                </div>
-                <div className="form-group">
-                    <label style={{color: "white"}}>Password </label>
-                    <input type="password" className="form-control" placeholder="Password" id="password" style={{width: "260px", marginLeft: "20px", margin: "10px"}}/>
-                </div>
-                <div className="btn-container">
-                    <button type="submit" className="btn-login" id="login" onClick={() => login()}>Login</button>
-                </div>
-            </div>
-     );
-}
- 
+    setIsLoggedIn(false)
+  }, []);
+
+  const login = () => {
+    axios
+      .post("http://localhost:8080/api/v1/auth/authenticate", {
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value,
+      })
+      .then((response) => {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("role", response.data.role);
+        setIsLoggedIn(true);
+        navigate(`/movies`);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  console.log(localStorage.getItem("userID"));
+  return (
+    <div className="login-form">
+      <div className="form-group">
+        <label style={{ color: "white" }}>Username </label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="User Name"
+          id="username"
+          style={{ width: "260px", marginLeft: "20px", margin: "10px" }}
+        />
+      </div>
+      <div className="form-group">
+        <label style={{ color: "white" }}>Password </label>
+        <input
+          type="password"
+          className="form-control"
+          placeholder="Password"
+          id="password"
+          style={{ width: "260px", marginLeft: "20px", margin: "10px" }}
+        />
+      </div>
+      <div className="btn-container">
+        <button
+          type="submit"
+          className="btn-login"
+          id="login"
+          onClick={() => login()}
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  );
+};
+
 export default Login;

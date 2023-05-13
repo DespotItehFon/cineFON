@@ -13,7 +13,6 @@ const Reviews = () => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
             });
-            // setMovies(response.data.content)
             setReviews(response.data.content);
         } catch (error) {
             console.error(error);

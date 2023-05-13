@@ -12,30 +12,29 @@ import CreateReview from './components/CreateReview';
 import Watchlist from './components/Watchlist';
 import Reviews from './components/Reviews';
 import { useEffect, useState } from 'react';
-import AllReviews from './components/AllReviews';
 import UserPage from './components/UserPage';
 import MyPage from './components/MyPage';
 import Genre from './components/Genre';
 import UpdateReview from './components/UpdateReview';
+import axios from 'axios';
 
 
 function App() {
-  const [userRole, setUserRole] = useState('');
-    useEffect(() => {
-        setUserRole(localStorage.getItem('role'));
-    }, [localStorage.getItem('role')])
 
-    
+  const [isLoggedIn, setIsLoggedIn] = useState(true);  
+  useEffect(() => {
+    if(localStorage.getItem("token")===null) setIsLoggedIn(false)
+    else setIsLoggedIn(true);
+  }, [localStorage.getItem("token")])
+
   return (
     <BrowserRouter>
     <div className="App">
-      <Navbar/>
+      {<Navbar isLoggedIn={isLoggedIn}/>}
       <div className='body'>
-        {/* <Login/> */}
-        {/* <Register/> */}
           <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/register" element={<Register />} />
             <Route path="/movies" element={<MoviesPage/>} />
             <Route path="/movies/:id" element={<MovieDetails/>} />
@@ -44,7 +43,6 @@ function App() {
             <Route path="/addreview/:id" element={<CreateReview/>} />
             <Route path="/watchlist" element={<Watchlist/>} />
             <Route path="/reviews" element={<Reviews/>} />
-            <Route path="/allreviews" element={<AllReviews/>} />
             <Route path="/user" element={<MyPage/>} />
             <Route path="/review/user/:userID" element={<UserPage/>} />
             <Route path="/genre/:id" element={<Genre/>}/>

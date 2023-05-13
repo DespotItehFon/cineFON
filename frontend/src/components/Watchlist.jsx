@@ -31,8 +31,6 @@ const Watchlist = () => {
             }
         });
     }
-
-    console.log(movies)
     return ( 
         <div className="watchlist">
             {movies && movies.map((movie) => (
