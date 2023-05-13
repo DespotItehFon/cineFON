@@ -54,6 +54,7 @@ public class WatchListService {
                 .findByUserId(currentlyLoggedInUser.getId())
                 .orElseThrow(DataNotFoundException::new);
         watchList.removeMovie(movieToBeRemovedFromWatchList);
+        watchListRepository.save(watchList);
     }
 
     public boolean isInMyWatchlist(Long movieId) {

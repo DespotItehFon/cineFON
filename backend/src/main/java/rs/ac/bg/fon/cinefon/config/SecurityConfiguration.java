@@ -33,18 +33,12 @@ public class SecurityConfiguration {
 
                         .requestMatchers(HttpMethod.POST, "/api/v1/reviews/**").hasAuthority(CRITIC.name())
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/reviews/**").hasAuthority(CRITIC.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/reviews/**").hasAuthority(CRITIC.name())
 
-                        .requestMatchers(HttpMethod.GET, "/api/v1/watchlist").hasAuthority(USER.name())
+                        .requestMatchers(HttpMethod.GET, "/api/v1/watchlist/movie**").hasAuthority(USER.name())
                         .requestMatchers(HttpMethod.POST, "/api/v1/watchlist/**").hasAuthority(USER.name())
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/watchlist/**").hasAuthority(USER.name())
 
-//                        .requestMatchers(HttpMethod.POST, "/api/v1/gradovi/**").hasAuthority("ADMIN")
-//                        .requestMatchers(HttpMethod.DELETE, "/api/v1/gradovi/**").hasAuthority("ADMIN")
-//                        .requestMatchers(HttpMethod.POST, "/api/v1/obavestenja/**").hasAuthority("ADMIN")
-//                        .requestMatchers(HttpMethod.DELETE, "/api/v1/obavestenja/**").hasAuthority("ADMIN")
-//                        .requestMatchers(HttpMethod.PATCH, "/api/v1/molbe/**").hasAuthority("ADMIN")
-//                        .requestMatchers(HttpMethod.PATCH, "/api/v1/studenti/**").hasAuthority("ADMIN")
-//                        .requestMatchers(HttpMethod.GET, "/api/v1/prijave/admin**").hasAuthority("ADMIN")
                         .anyRequest().authenticated())
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

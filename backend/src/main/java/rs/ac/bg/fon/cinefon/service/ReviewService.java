@@ -57,4 +57,18 @@ public class ReviewService {
             reviewRepository.deleteById(id);
         }
     }
+
+    public void updateReview(Long id, Review review) {
+        User currentlyLoggedInUser = userService.getCurrentlyLoggedInUser();
+        if(!currentlyLoggedInUser.getRole().equals(Role.CRITIC)) {
+            throw new IllegalArgumentException("You are not logged in as critic");
+        }
+
+        Review databaseReview = reviewRepository.findById(id).orElseThrow(DataNotFoundException::new);
+
+        databaseReview.setDate(LocalDate.now());
+        databaseReview.setRating(review.getRating());
+        databaseReview.setContent(review.getContent());
+        reviewRepository.save(databaseReview);
+    }
 }

@@ -45,4 +45,14 @@ public class ReviewController {
         reviewService.deleteReview(id);
     }
 
+
+    @PutMapping
+    public void updateReview(@RequestBody Review review) {
+        reviewService.updateReview(review.getId(), review);
+    }
+
+    @PutMapping("/{id}")
+    public void updateReview(@PathVariable Long id, @RequestBody Review review) {
+        reviewService.updateReview(id, review);
+    }
 }
