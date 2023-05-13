@@ -85,8 +85,47 @@ const MovieDetails = () => {
     const handleReviewPosted = () => {
       setAddReviewSwitch(false);
     };
-
+    let isInMyWatchlist = false;
+    let data = [];
+    useEffect(() => {
+      const isInWatchlist = async () => {
+          try {
+            const response = await axios.get('http://localhost:8080/api/v1/watchlist/movie/' + id, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+              }
+            });
+            // setMovies(response.data.content)
+          //   setMovies(response.data.content.filter((m) => (m.id<200)));
+          //   movieDetails = response.data;
+            console.log(response);
+            data = response;
+            isInMyWatchlist = response.data;
+          //   console.log(movieDetails.data)
+          } catch (error) {
+            console.error(error);
+          }
+        };
     
+        isInWatchlist();
+        console.log(data)
+      }, []);
+
+      function removeFromWatchlist(){
+        axios.delete('http://localhost:8080/api/v1/watchlist/movie/' + id, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+        })
+        .then(response => {
+            console.log(response.data); // Print the response data
+        })
+        .catch(error => {
+            console.error(error); // Handle the error
+        });
+        // console.log(id)
+    }
+
     return ( 
       <>
         {addReviewSwitch && (
@@ -94,10 +133,13 @@ const MovieDetails = () => {
           <div className="title" style={{ width: '1280px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <h1>{details.title}</h1>
             {userRole === 'CRITIC' && (
-              <button className="movie-btn" onClick={() => setAddReviewSwitch(!addReviewSwitch)}>Create review</button>
+              <button className="movie-btn" style={{width: '300px'}} onClick={() => setAddReviewSwitch(!addReviewSwitch)}>Create review</button>
             )}
             {userRole === 'USER' && (
-              <button className="movie-btn" onClick={() => addToWatchlist()}>Add to watchlist</button>
+              isInMyWatchlist && <button className="movie-btn" style={{width: '300px'}} onClick={() => addToWatchlist()}>Add to watchlist</button>
+            )}
+            {userRole === 'USER' && (
+              !isInMyWatchlist && <button className="movie-btn" style={{width: '300px'}} onClick={() => removeFromWatchlist()}>Remove from watchlist</button>
             )}
           </div>
 

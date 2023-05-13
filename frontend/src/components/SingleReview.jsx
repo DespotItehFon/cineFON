@@ -3,7 +3,7 @@ import {  useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const SingleReview = ({ review, deleteReview }) => {
+const SingleReview = ({ review, deleteReview, isUserPage }) => {
     const [userId, setUserId] = useState();
     useEffect(() => {
         axios
@@ -32,17 +32,30 @@ const SingleReview = ({ review, deleteReview }) => {
     const navigate = useNavigate();
     
 
-    const handleNavigation = (id) => {
+    const handleNavigationToTheUser = (id) => {
         const newUrl = 'http://localhost:3000/review/user/' + id; 
         window.location.href = newUrl;
     };
-    console.log(deleteReview)
+
+    const handleNavigationToTheMovie = (id) => {
+        const newUrl = 'http://localhost:3000/movies/' + id; 
+        window.location.href = newUrl;
+    };
+    
     return ( 
         <div className="single-review" style={{ color: 'white' }}>
         <div className="review-info">
-            <div className="author" onClick={() => handleNavigation(review.author.id)}>
-            {review.author.firstname} {review.author.lastname}:
-            </div>
+            {isUserPage &&
+            <div className="author" style={{color: 'green'}} onClick={() => handleNavigationToTheMovie(review.movie.id)}>
+            {review.movie.title}: 
+            </div>}
+            {!isUserPage &&
+            <div className="author" style={{color: 'green'}} onClick={() => handleNavigationToTheUser(review.author.id)}>
+            {review.author.firstname} {review.author.lastname}:  
+            </div>}
+            {/* <div className="author" style={{color: 'green'}} onClick={() => handleNavigation(review.author.id)}>
+            {review.movie.title}: 
+            </div> */}
             <div className="review-content">{review.content}</div>
         </div>
         <div className="rating">Rating: {review.rating}</div>

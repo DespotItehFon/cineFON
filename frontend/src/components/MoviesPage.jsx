@@ -45,6 +45,11 @@ const MoviesPage = () => {
         setCurrentPage((prevPage) => prevPage - 1);
     };
 
+    const goToPage = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        // Perform any other actions you need when navigating to a specific page
+      };
+
     return ( 
         <div>
             {/* <button onClick={previousPage} disabled={currentPage === 0}>Previous</button>
@@ -55,20 +60,33 @@ const MoviesPage = () => {
             {data.popularity} */}
             <h1 style={{color: 'white', marginLeft: '100px', marginBottom: '40px'}}>Movies</h1>
             <div className="pagination">
-                <button
-                style={{width: '120px'}}
+            <button
+                style={{ width: '120px' }}
                 onClick={previousPage}
                 disabled={currentPage === 0}
                 className="pagination-button"
-                >
+            >
                 Previous
             </button>
-            <button 
-                style={{width: '120px'}}
-                onClick={(nextPage)}
-                disabled={currentPage === 3}
-                className="pagination-button"
+
+            {/* Generate page numbers */}
+            {Array.from(Array(totalPages).keys()).map((pageNumber) => (
+                <button
+                key={pageNumber}
+                style={{ width: '40px' }}
+                onClick={() => goToPage(pageNumber)}
+                className={`pagination-button ${pageNumber === currentPage ? 'active' : ''}`}
                 >
+                {pageNumber + 1}
+                </button>
+            ))}
+
+            <button
+                style={{ width: '120px' }}
+                onClick={nextPage}
+                disabled={currentPage === totalPages - 1}
+                className="pagination-button"
+            >
                 Next
             </button>
             </div>
