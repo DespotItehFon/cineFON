@@ -10,6 +10,7 @@ import rs.ac.bg.fon.cinefon.exception.DataNotFoundException;
 import rs.ac.bg.fon.cinefon.repository.ReviewRepository;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 public class ReviewService {
@@ -70,5 +71,11 @@ public class ReviewService {
         databaseReview.setRating(review.getRating());
         databaseReview.setContent(review.getContent());
         reviewRepository.save(databaseReview);
+    }
+
+    public long isReviewed(Long movieId) {
+        User currentlyLoggedInUser = userService.getCurrentlyLoggedInUser();
+        Optional<Review> byAuthorIdAndMovieId = reviewRepository.findByAuthorIdAndMovieId(currentlyLoggedInUser.getId(), movieId);
+        return byAuthorIdAndMovieId.map(Review::getId).orElse(-1L);
     }
 }

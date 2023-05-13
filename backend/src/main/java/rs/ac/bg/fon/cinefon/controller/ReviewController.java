@@ -55,4 +55,9 @@ public class ReviewController {
     public void updateReview(@PathVariable Long id, @RequestBody Review review) {
         reviewService.updateReview(id, review);
     }
+
+    @GetMapping("/movie/{movieId}/isReviewed")
+    public long isReviewed(@PathVariable Long movieId) {
+        return reviewService.isReviewed(movieId);
+    }
 }
