@@ -34,7 +34,7 @@
 
 .body{
   width: 100%;
-  min-height: 100vh;
+  min-height: 250vh;
   /* min-height: 800vh;
   height: auto; */
   /* display: flex;
@@ -236,8 +236,8 @@ select:focus {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  width: 800px;
-  margin-left: 20px;
+  width: 924px;
+  margin-left: 22%;
 }
 
 .pagination-button {
@@ -424,4 +424,70 @@ select:focus {
   cursor: pointer;
   color: #0a7af3;
   transition: 0.5s;
+}
+
+.movie-poster {
+  background-image: url(https://image.tmdb.org/t/p/w185/${movie.poster_path});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 185px;
+  height: 278px; /* Adjust the height to match the aspect ratio of the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.movie-poster:hover{
+  cursor: pointer;
+  box-shadow: 0 0 25px #2c3e50;
+}
+
+.movies-page{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  width: 1000px;
+  justify-content: space-between;
+}
+
+.single-review {
+  position: relative;
+}
+
+.delete-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.movie-poster-delete {
+  background-image: url(https://image.tmdb.org/t/p/w185/${movie.poster_path});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 185px;
+  height: 278px; /* Adjust the height to match the aspect ratio of the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.movie-poster-delete:hover{
+  cursor: pointer;
+  box-shadow: 0 0 25px #f30000;
+}
+
+.box-actor {
+  width: 150px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+}
+
+.box-actor:hover{
+  cursor: pointer;
 }

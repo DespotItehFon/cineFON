@@ -23,6 +23,8 @@ function App() {
     useEffect(() => {
         setUserRole(localStorage.getItem('role'));
     }, [localStorage.getItem('role')])
+
+    
   return (
     <BrowserRouter>
     <div className="App">

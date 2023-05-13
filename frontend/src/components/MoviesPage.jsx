@@ -32,7 +32,6 @@ const MoviesPage = () => {
         console.log(movies)
     }, [currentPage]);
     // const [currentPage, setCurrentPage] = useState(1);
-    const actorsPerPage = 5;
 
     
 
@@ -47,13 +46,14 @@ const MoviesPage = () => {
     };
 
     return ( 
-        <div className="movies-page" style={{color: 'white'}}>
+        <div>
             {/* <button onClick={previousPage} disabled={currentPage === 0}>Previous</button>
             <button onClick={nextPage} disabled={currentPage === totalPages - 1}>Next</button> */}
             {/* <button onClick={() => console.log(movies)}>sd</button> */}
             {/* {data.title} <br/>
             {data.tagline}<br/>
             {data.popularity} */}
+            <h1 style={{color: 'white', marginLeft: '100px', marginBottom: '40px'}}>Movies</h1>
             <div className="pagination">
                 <button
                 style={{width: '120px'}}
@@ -72,11 +72,11 @@ const MoviesPage = () => {
                 Next
             </button>
             </div>
-            
-            {movies && movies.map((movie) => (
-                <Movie movie={movie}/>
-            ))}
-            
+            <div className="movies-page">
+                {movies && movies.map((movie) => (
+                    <Movie movie={movie}/>
+                ))}
+            </div>
             {/* <Movie title={data.title} tagline={data.tagline} popularity={data.popularity}/>
             <Movie title={data.title} tagline={data.tagline} popularity={data.popularity}/>
             <Movie title={data.title} tagline={data.tagline} popularity={data.popularity}/> */}

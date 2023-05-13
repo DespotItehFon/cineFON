@@ -71,6 +71,7 @@ const UserPage = () => {
     else if(role === 'USER'){
         console.log(watchlist)
     }
+    const deleteReview = false;
     return ( 
         <div className="user-page" style={{paddingLeft: '27%'}}>
             {role === 'CRITIC' && reviews && reviews.map((review) => (

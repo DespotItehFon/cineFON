@@ -68,6 +68,7 @@ const MovieDetails = () => {
       })
       .then(response => {
         console.log('Review posted successfully:', response.data);
+        setAddReviewSwitch(true)
         // Perform any necessary actions after successful review submission
 
         // Redirect to the movie details page
@@ -81,19 +82,24 @@ const MovieDetails = () => {
 
     const [addReviewSwitch, setAddReviewSwitch] = useState(true);
 
+    const handleReviewPosted = () => {
+      setAddReviewSwitch(false);
+    };
+
     
     return ( 
       <>
-        {addReviewSwitch === true && <div className="movie-details" style={{color: "#5a7795"}}>
-        <div className="title" style={{ width: '1280px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1>{details.title}</h1>
-          {userRole === 'CRITIC' && (
-            <button className="movie-btn" onClick={() => setAddReviewSwitch(!addReviewSwitch)}>Create review</button>
-          )}
-          {userRole === 'USER' && (
-            <button className="movie-btn" onClick={() => addToWatchlist()}>Add to watchlist</button>
-          )}
-        </div>
+        {addReviewSwitch && (
+        <div className="movie-details" style={{ color: "#5a7795" }}>
+          <div className="title" style={{ width: '1280px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <h1>{details.title}</h1>
+            {userRole === 'CRITIC' && (
+              <button className="movie-btn" onClick={() => setAddReviewSwitch(!addReviewSwitch)}>Create review</button>
+            )}
+            {userRole === 'USER' && (
+              <button className="movie-btn" onClick={() => addToWatchlist()}>Add to watchlist</button>
+            )}
+          </div>
 
           <div className="backdrop" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${details.backdrop_path})` }}/>
           <h5 style={{width: '1280px'}}>{details.overview}</h5>
@@ -139,14 +145,22 @@ const MovieDetails = () => {
           
           <div className="movies-reviews">
             <h2>Reviews</h2>
-            <div style={{marginLeft: '20px', marginTop: '20px'}}>
-                {reviews && reviews.map((review) => (
-                  <SingleReview review={review}/>
-                ))}
-              </div>
+            <div style={{ marginLeft: '20px', marginTop: '20px' }}>
+              {reviews && reviews.map((review) => (
+                <SingleReview review={review} />
+              ))}
+            </div>
           </div>
-      </div>}
-      {addReviewSwitch === false && <CreateReview details={details} setAddReviewSwitch={setAddReviewSwitch} addReviewSwitch={addReviewSwitch}/>}
+        </div>
+      )}
+      {/* {addReviewSwitch === false && <CreateReview details={details} setAddReviewSwitch={setAddReviewSwitch} addReviewSwitch={addReviewSwitch}/>} */}
+      {!addReviewSwitch && (
+        <CreateReview
+          details={details}
+          setAddReviewSwitch={setAddReviewSwitch}
+          onReviewPosted={() => setAddReviewSwitch(true)}
+        />
+      )}
       </>
      );
 }

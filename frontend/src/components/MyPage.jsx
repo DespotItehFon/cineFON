@@ -70,14 +70,38 @@ const MyPage = () => {
     else if(role === 'USER'){
         console.log(watchlist)
     }
+    function removeFromWatchlist(id){
+        axios.delete('http://localhost:8080/api/v1/watchlist/movie/' + id, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+        })
+        .then(response => {
+            console.log(response.data); // Print the response data
+        })
+        .catch(error => {
+            console.error(error); // Handle the error
+        });
+        // console.log(id)
+    }
+
+    
     return ( 
-        <div className="user-page" style={{paddingLeft: '28%'}}>
-            {role === 'CRITIC' && reviews && reviews.map((review) => (
-                <SingleReview review={review} delete={true}/>
+        <div className="user-page">
+            {role === 'USER' &&  <h1 style={{color: 'white', marginLeft: '100px', marginBottom: '40px'}}>My watchlist</h1>}
+            {role === 'CRITIC' &&  <h1 style={{color: 'white', marginLeft: '100px', marginBottom: '40px'}}>My reviews</h1>}
+            <div className="movies-page">
+                {role === 'USER' && watchlist && watchlist.movies && watchlist.movies.map((movie) => (
+                <Movie movie={movie} removeFromWatchlist={removeFromWatchlist}/>
             ))}
-            {role === 'USER' && watchlist && watchlist.movies && watchlist.movies.map((movie) => (
-                <Movie movie={movie}/>
-            ))}
+            </div>
+            <div style={{paddingLeft: '28%'}}>
+                {role === 'CRITIC' && reviews && reviews.map((review) => (
+                    <SingleReview review={review}/>
+                ))}
+            </div>
+            
+            
         </div>
      );
 }

@@ -24,11 +24,19 @@ const Watchlist = () => {
         console.log(movies)
     }, []);
 
+    function removeFromWatchlist(id){
+        axios.delete('http://localhost:8080/api/v1/watchlist/movie' + id, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+    }
+
     console.log(movies)
     return ( 
         <div className="watchlist">
             {movies && movies.map((movie) => (
-                <Movie movie={movie}/>
+                <Movie movie={movie} removeFromWatchlist={removeFromWatchlist}/>
             ))}
         </div>
      );

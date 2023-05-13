@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const CreateReview = ({ details, setAddReviewSwitch, addReviewSwitch}) => {
+const CreateReview = ({ details, setAddReviewSwitch, onReviewPosted}) => {
 
   const navigate = useNavigate();
   // const { id } = useParams();
@@ -32,10 +32,11 @@ const CreateReview = ({ details, setAddReviewSwitch, addReviewSwitch}) => {
     // Perform any necessary actions after successful review submission
 
     // Redirect to the movie details page
-    navigate(`/movies/${details.id}`);
+    onReviewPosted();
   })
   .catch(error => {
     console.error('Error posting review:', error);
+    onReviewPosted();
     // Handle error scenarios
   });
 }
@@ -45,8 +46,6 @@ const [selectedValue, setSelectedValue] = useState(1);
   const handleSliderChange = () => {
     const value = sliderRef.current.value;
     setSelectedValue(value);
-    setAddReviewSwitch(true);
-    navigate(`/movies/${details.id}`);
   };
 
     return ( 
