@@ -2,7 +2,6 @@ package rs.ac.bg.fon.cinefon.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.ArrayList;

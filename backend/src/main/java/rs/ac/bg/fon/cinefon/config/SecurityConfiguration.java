@@ -11,8 +11,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static rs.ac.bg.fon.cinefon.domain.Role.CRITIC;
-import static rs.ac.bg.fon.cinefon.domain.Role.USER;
+import static rs.ac.bg.fon.cinefon.domain.Role.*;
 
 @Configuration
 @EnableWebSecurity
@@ -25,19 +24,22 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors().disable()
+                .cors()
+                .and()
                 .csrf().disable()
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/api/v1/seed**").permitAll()
 
-                        .requestMatchers(HttpMethod.POST, "/api/v1/reviews/**").hasAuthority(CRITIC.name())
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/reviews/**").hasAuthority(CRITIC.name())
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/reviews/**").hasAuthority(CRITIC.name())
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/movies/**").hasAuthority(ADMIN.getAuthority())
 
-                        .requestMatchers(HttpMethod.GET, "/api/v1/watchlist/movie**").hasAuthority(USER.name())
-                        .requestMatchers(HttpMethod.POST, "/api/v1/watchlist/**").hasAuthority(USER.name())
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/watchlist/**").hasAuthority(USER.name())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/reviews/**").hasAuthority(CRITIC.getAuthority())
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/reviews/**").hasAnyAuthority(CRITIC.getAuthority(), ADMIN.getAuthority())
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/reviews/**").hasAuthority(CRITIC.getAuthority())
+
+                        .requestMatchers(HttpMethod.GET, "/api/v1/watchlist/movie**").hasAuthority(USER.getAuthority())
+                        .requestMatchers(HttpMethod.POST, "/api/v1/watchlist/**").hasAuthority(USER.getAuthority())
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/watchlist/**").hasAuthority(USER.getAuthority())
 
                         .anyRequest().authenticated())
                 .sessionManagement()

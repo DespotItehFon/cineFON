@@ -2,10 +2,7 @@ package rs.ac.bg.fon.cinefon.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rs.ac.bg.fon.cinefon.domain.Movie;
 import rs.ac.bg.fon.cinefon.service.MovieService;
 
@@ -33,5 +30,10 @@ public class MovieController {
     @GetMapping("/{movieId}/statistics")
     public Map<Integer, Long> getStatistics(@PathVariable Long movieId) {
         return movieService.getStatistics(movieId);
+    }
+
+    @PutMapping
+    public Movie updateMovie(@RequestBody Movie movie) {
+        return movieService.updateMovie(movie);
     }
 }

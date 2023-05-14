@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import rs.ac.bg.fon.cinefon.domain.Review;
 import rs.ac.bg.fon.cinefon.service.ReviewService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/reviews")
 public class ReviewController {

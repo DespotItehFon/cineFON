@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import rs.ac.bg.fon.cinefon.domain.WatchList;
 import rs.ac.bg.fon.cinefon.service.WatchListService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/watchlist")
 public class WatchlistController {

@@ -40,4 +40,12 @@ public class MovieService {
         return statistics;
     }
 
+    public Movie updateMovie(Movie movie) {
+        Movie movieFromDatabase = movieRepository.findById(movie.getId()).orElseThrow(DataNotFoundException::new);
+        movieFromDatabase.setBudget(movie.getBudget());
+        movieFromDatabase.setOverview(movie.getOverview());
+        movieFromDatabase.setTagline(movie.getTagline());
+        movieFromDatabase.setRuntime(movie.getRuntime());
+        return movieRepository.save(movieFromDatabase);
+    }
 }
