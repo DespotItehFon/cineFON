@@ -12,7 +12,7 @@ const Register = () => {
         role: document.getElementById("role").value,
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error(error);

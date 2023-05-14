@@ -7,7 +7,7 @@ const ActorsPage = () => {
   const [actors, setActors] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       try {

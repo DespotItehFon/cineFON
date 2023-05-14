@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import SingleReview from "./SingleReview";
 import CreateReview from "./CreateReview";
-import { Chart } from "chart.js";
 import BarChart from "./BarChar";
 
 const MovieDetails = () => {
@@ -66,7 +65,7 @@ const MovieDetails = () => {
     };
 
     fetchData();
-  });
+  }, []);
 
   const navigate = useNavigate();
   const userRole = localStorage.getItem("role");
@@ -182,6 +181,15 @@ const MovieDetails = () => {
                 Remove from watchlist
               </button>
             )}
+            {userRole === "ADMIN" &&(
+              <button
+                className="movie-btn"
+                style={{ width: "300px" }}
+                onClick={() => navigate('/updatemovie/' + id)}
+              >
+                Update movie
+              </button>
+            )}
           </div>
 
           <div
@@ -285,7 +293,7 @@ const MovieDetails = () => {
             <div style={{ marginLeft: "20px", marginTop: "20px" }}>
               <h2>Reviews</h2>
               {reviews &&
-                reviews.map((review) => <SingleReview review={review} />)}
+                reviews.map((review) => <SingleReview review={review} key={review.id}/>)}
               {reviews.length === 0 && (
                 <h4 style={{ width: "600px", marginLeft: "20px" }}>
                   No reviews available yet. Check back later for updates!

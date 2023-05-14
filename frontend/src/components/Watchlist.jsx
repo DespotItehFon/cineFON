@@ -21,7 +21,7 @@ const Watchlist = () => {
         };
 
         fetchData();
-        console.log(movies)
+        // console.log(movies)
     }, []);
 
     function removeFromWatchlist(id){
@@ -34,7 +34,7 @@ const Watchlist = () => {
     return ( 
         <div className="watchlist">
             {movies && movies.map((movie) => (
-                <Movie movie={movie} removeFromWatchlist={removeFromWatchlist}/>
+                <Movie movie={movie} removeFromWatchlist={removeFromWatchlist} key={movie.id}/>
             ))}
         </div>
      );

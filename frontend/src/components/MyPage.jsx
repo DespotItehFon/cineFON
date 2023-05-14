@@ -91,13 +91,13 @@ const MyPage = () => {
         {role === "USER" &&
           watchlist &&
           watchlist.movies &&
-          watchlist.movies.map((movie) => <Movie movie={movie} />)}
+          watchlist.movies.map((movie) => <Movie movie={movie} key={movie.id}/>)}
       </div>
       <div style={{ paddingLeft: "28%" }}>
         {role === "CRITIC" &&
           reviews &&
           reviews.map((review) => (
-            <SingleReview review={review} isUserPage={isUserPage} />
+            <SingleReview review={review} isUserPage={isUserPage} key={review.id}/>
           ))}
       </div>
     </div>

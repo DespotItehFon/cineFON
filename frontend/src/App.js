@@ -17,24 +17,42 @@ import MyPage from './components/MyPage';
 import Genre from './components/Genre';
 import UpdateReview from './components/UpdateReview';
 import axios from 'axios';
+import UpdateMovie from './components/UpdateMovie';
 
 
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);  
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [user, setUser]   = useState();
   useEffect(() => {
     if(localStorage.getItem("token")===null) setIsLoggedIn(false)
     else setIsLoggedIn(true);
   }, [localStorage.getItem("token")])
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:8080/api/v1/users/currentlyLoggedIn", {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       setUser(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  //     console.log(user)
+  // }, [isLoggedIn]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   return (
     <BrowserRouter>
     <div className="App">
-      {<Navbar isLoggedIn={isLoggedIn}/>}
+      {<Navbar isLoggedIn={isLoggedIn} isAdmin={isAdmin}/>}
       <div className='body'>
           <Routes>
-          <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin}/>} />
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setIsAdmin={setIsAdmin}/>} />
             <Route path="/register" element={<Register />} />
             <Route path="/movies" element={<MoviesPage/>} />
             <Route path="/movies/:id" element={<MovieDetails/>} />
@@ -47,6 +65,7 @@ function App() {
             <Route path="/review/user/:userID" element={<UserPage/>} />
             <Route path="/genre/:id" element={<Genre/>}/>
             <Route path="/updatereview/:id" element={<UpdateReview/>}/>
+            <Route path="/updatemovie/:id" element={<UpdateMovie/>}/>
           </Routes>
       </div>
     </div>

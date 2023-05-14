@@ -1,8 +1,4 @@
-// import { useEffect, useState, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import SingleReview from "./SingleReview";
-import CreateReview from "./CreateReview";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -54,18 +50,6 @@ const BarChart = ({ movieID }) => {
             },
           ],
         });
-        setChartOptions({
-          responsive: true,
-          plugins: {
-            legend: {
-              position: "top",
-            },
-            title: {
-              display: true,
-              text: "Ratings",
-            },
-          },
-        });
       } catch (error) {
         console.error(error);
       }
@@ -78,7 +62,6 @@ const BarChart = ({ movieID }) => {
       className="chart-container"
       style={{ width: "300px", height: "300px", marginLeft: "20px" }}
     >
-      <h2 style={{ textAlign: "center" }}>Bar Chart</h2>
       <Bar options={chartOptions} data={chartData} />
     </div>
   );

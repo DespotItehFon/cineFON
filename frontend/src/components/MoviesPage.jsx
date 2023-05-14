@@ -83,7 +83,7 @@ const MoviesPage = () => {
         </button>
       </div>
       <div className="movies-page">
-        {movies && movies.map((movie) => <Movie movie={movie} />)}
+        {movies && movies.map((movie) => <Movie movie={movie} key={movie.id}/>)}
       </div>
     </div>
   );

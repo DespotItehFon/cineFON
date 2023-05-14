@@ -93,7 +93,7 @@ const UserPage = () => {
       {role === "USER" &&
         watchlist &&
         watchlist.movies &&
-        watchlist.movies.map((movie) => <Movie movie={movie} />)}
+        watchlist.movies.map((movie) => <Movie movie={movie} key={movie.id}/>)}
     </div>
   );
 };

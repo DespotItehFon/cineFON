@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = ({ setIsLoggedIn, setIsAdmin }) => {
   const navigate = useNavigate();
   useEffect(() => {
     localStorage.removeItem("role");
@@ -20,6 +20,7 @@ const Login = ({ setIsLoggedIn }) => {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("role", response.data.role);
         setIsLoggedIn(true);
+        setIsAdmin(response.data.role==="ADMIN")
         navigate(`/movies`);
       })
       .catch((error) => {

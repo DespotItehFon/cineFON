@@ -26,7 +26,7 @@ const UpdateReview = () => {
     };
 
     getReviewByID();
-    console.log(review);
+    // console.log(review);
   }, []);
   
   const handleSubmit = () => {

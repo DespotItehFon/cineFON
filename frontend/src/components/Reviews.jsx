@@ -20,13 +20,12 @@ const Reviews = () => {
         };
 
         fetchData();
-        console.log(reviews)
+        // console.log(reviews)
     }, []);
-    console.log(reviews)
     return ( 
         <div className="reviews">
             {reviews && reviews.map((review) => (
-                <SingleReview review={review}/>
+                <SingleReview review={review} key={review.id}/>
             ))}
             {!reviews && <h2>No reviews yet</h2>}
         </div>

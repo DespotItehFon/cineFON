@@ -57,7 +57,7 @@ const Genre = () => {
           width: "1400px",
         }}
       >
-        {movies && movies && movies.map((movie) => <Movie movie={movie} />)}
+        {movies && movies && movies.map((movie) => <Movie movie={movie} key={movie.id}/>)}
       </div>
     </>
   );

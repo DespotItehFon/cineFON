@@ -21,7 +21,7 @@ const CreateReview = ({ details, setAddReviewSwitch, onReviewPosted }) => {
         }
       )
       .then((response) => {
-        console.log("Review posted successfully:", response.data);
+        // console.log("Review posted successfully:", response.data);
         onReviewPosted();
       })
       .catch((error) => {
