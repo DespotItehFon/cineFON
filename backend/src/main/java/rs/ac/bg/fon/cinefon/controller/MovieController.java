@@ -8,6 +8,7 @@ import rs.ac.bg.fon.cinefon.service.MovieService;
 
 import java.util.Map;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/movies")
 public class MovieController {
